@@ -4,12 +4,15 @@
 /node_modules
 /.pnp
 .pnp.js
+# Functions dependencies
+functions/serverless-ssr/node_modules
 
 # testing
 /coverage
 
 # production
 /build
+/functions-build
 
 # misc
 .DS_Store
@@ -24,6 +27,3 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
-
-# Functions dependencies
-functions/serverless-ssr/node_modules
