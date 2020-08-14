@@ -11,11 +11,11 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "npx cross-env NODE_ENV=dev npx npm-run-all --parallel start:app start:server",
-    "start:app": "react-scripts start",
+    "start": "react-scripts start",
+    "start:app-with-functions-eventually": "npx cross-env NODE_ENV=dev npx npm-run-all --parallel start:app start:server",
     "start:server": "npx netlify-lambda serve functions/serverless-ssr",
-    "build": "npx npm-run-all --parallel build:**",
-    "build:app": "react-scripts build",
+    "build": "react-scripts build",
+    "build:app-with-functions-eventually": "npx npm-run-all --parallel build:**",
     "build:functions": "npx netlify-lambda build functions/serverless-ssr",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
