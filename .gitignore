@@ -6,6 +6,7 @@
 .pnp.js
 # Functions dependencies
 functions/serverless-ssr/node_modules
+functions/fauna-graphql/node_modules
 
 # testing
 /coverage
