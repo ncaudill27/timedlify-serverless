@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -34,7 +33,7 @@ function Header() {
   return (
     <header>
       <h1>Timedify</h1>
-      <div class='menu'>
+      <div className='menu'>
         <h3>|||</h3>
       </div>
   </header>
@@ -81,31 +80,31 @@ function Create({changeView}) {
   
   return (
       <form onSubmit={handleSubmit}>
-        <label for='name'>Name</label>
+        <label htmlFor='name'>Name</label>
         <input id='name' type='text' name='name' value={name} onChange={handleChange} autoComplete='off' />
 
         <h3>Select a playlist</h3>
         <input className='playlist' type='radio' id='playlist1' name='playlist' value='playlist1' checked={playlist === 'playlist1'} onChange={handlePlaylist} />
-        <label className='playlist-for' for='playlist1'>Playlist 1</label>
+        <label className='playlist-for' htmlFor='playlist1'>Playlist 1</label>
         <input className='playlist' type='radio' id='playlist2' name='playlist' value='playlist2' checked={playlist === 'playlist2'} onChange={handlePlaylist} />
-        <label className='playlist-for' for='playlist2'>Playlist 2</label>
+        <label className='playlist-for' htmlFor='playlist2'>Playlist 2</label>
         <input className='playlist' type='radio' id='playlist3' name='playlist' value='playlist3' checked={playlist === 'playlist3'} onChange={handlePlaylist} />
-        <label className='playlist-for' for='playlist3'>Playlist 3</label>
+        <label className='playlist-for' htmlFor='playlist3'>Playlist 3</label>
         <input className='playlist' type='radio' id='playlist4' name='playlist' value='playlist4' checked={playlist === 'playlist4'} onChange={handlePlaylist} />
-        <label className='playlist-for' for='playlist4'>Playlist 4</label>
+        <label className='playlist-for' htmlFor='playlist4'>Playlist 4</label>
 
         <h3>Color</h3>
-        <div class='colors'>
+        <div className='colors'>
           <input className='color' type='radio' id='ff7300' name='color' value='#ff7300' checked={color === '#ff7300'} onChange={handleColor} />
-          <label className='color-for' for='ff7300' style={{backgroundColor: '#ff7300'}}></label>
+          <label className='color-for' htmlFor='ff7300' style={{backgroundColor: '#ff7300'}}></label>
           <input className='color' type='radio' id='#ff0000' name='color' value='#ff0000' checked={color === '#ff0000'} onChange={handleColor} />
-          <label className='color-for' for='#ff0000' style={{backgroundColor: '#ff0000'}}></label>
+          <label className='color-for' htmlFor='#ff0000' style={{backgroundColor: '#ff0000'}}></label>
           <input className='color' type='radio' id='#ae00ff' name='color' value='#ae00ff' checked={color === '#ae00ff'} onChange={handleColor} />
-          <label className='color-for' for='#ae00ff' style={{backgroundColor: '#ae00ff'}}></label>
+          <label className='color-for' htmlFor='#ae00ff' style={{backgroundColor: '#ae00ff'}}></label>
           <input className='color' type='radio' id='#00ccff' name='color' value='#00ccff' checked={color === '#00ccff'} onChange={handleColor} />
-          <label className='color-for' for='#00ccff' style={{backgroundColor: '#00ccff'}}></label>
+          <label className='color-for' htmlFor='#00ccff' style={{backgroundColor: '#00ccff'}}></label>
           <input className='color' type='radio' id='#d9ff00' name='color' value='#d9ff00' checked={color === '#d9ff00'} onChange={handleColor} />
-          <label className='color-for' for='#d9ff00' style={{backgroundColor: '#d9ff00'}}></label>
+          <label className='color-for' htmlFor='#d9ff00' style={{backgroundColor: '#d9ff00'}}></label>
         </div>
         <button type='submit'>Create Timer</button>
       </form>
