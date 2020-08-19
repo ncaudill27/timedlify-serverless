@@ -168,9 +168,17 @@ COLORS RADIO
   margin-top: 25px;
 }
 
+.wheel-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5em;
+  height: 2.5em;
+  background-color: #4e4e4e;
+}
+
 .wheel {
-  display: block;
-  width: fit-content;
+  font-family: 'Envy Code R';
 }
 
 @keyframes input-glow {

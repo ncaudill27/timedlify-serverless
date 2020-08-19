@@ -34,7 +34,7 @@ function Header() {
     <header>
       <h1>Timedify</h1>
       <div className='menu'>
-        <h3>|||</h3>
+        {/* <h3>|||</h3> */}
       </div>
   </header>
   );
@@ -68,39 +68,22 @@ function Create({changeView}) {
 
   const [playlist, setPlaylist] = useState('');
   const handlePlaylist = e => setPlaylist(e.target.value);
-
   
   const [color, setColor] = useState('');
   const handleColor = e => setColor(e.target.value);
 
+  const [hours, setHours] = useState(12);
+  const handleHours = e => setHours(e.target.innerHTML);
+
+  const [minutes, setMinutes] = useState(0);
+  const handleMinutes = e => setMinutes(e.target.innerHTML);
+
+  const [noon, setNoon] = useState('PM');
+  const handleNoon = e => setNoon(e.target.innerHTML);
+  
   const handleSubmit = e => {
     e.preventDefault();
     changeView('main');
-  }
-
-  const Wheel = ({num, type}) => {
-
-    const hours = [...new Array(13).keys()].slice(1);
-    const minutes = [...new Array(6).keys()];
-
-    switch(type) {
-
-      case 'hours':
-
-      
-      default:
-        break
-    }
-
-    const displayValue = () => {
-
-    }
-
-    return (
-      <div className='wheel'>
-        <h2>{num}</h2>
-      </div>
-    )
   }
   
   return (
@@ -132,18 +115,45 @@ function Create({changeView}) {
           <label className='color-for' htmlFor='#d9ff00' style={{backgroundColor: '#d9ff00'}}></label>
         </div>
         
-        {/* <h3>Time</h3>
+        <h3>Time</h3>
         <div className='timer'>
-          <Wheel num={12} />
-          <Wheel num='00' />
-          <Wheel num='PM' />
-        </div> */}
+          <Wheel num={hours} type='hours' set={handleHours} />
+          <Wheel num={minutes} type='minutes' set={handleMinutes} />
+          <Wheel num={noon} set={handleNoon} />
+        </div>
         
         <button type='submit'>Create Timer</button>
       </form>
   );
 }
 
+const Wheel = ({num, type, set}) => {
+
+  const hours = [...new Array(13).keys()].slice(1);
+  const minutes = [...new Array(6).keys()];
+
+  switch(type) {
+
+    case 'hours':
+      hours.find( t => t === num)
+    
+    default:
+      break
+  }
+
+  const displayValue = () => {
+
+  }
+  
+  if (num.toString().length === 1) num = '0' + num;
+  return (
+    <div className='wheel-box'>
+      <div className='wheel'>
+        <h2 onMouseUp={set}>{num}</h2>
+      </div>
+    </div>
+  );
+}
 
 
 export default App;
