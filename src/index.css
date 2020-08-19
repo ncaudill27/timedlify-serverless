@@ -161,6 +161,18 @@ COLORS RADIO
   animation: dance 0.75s linear infinite;
 }
 
+.timer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.wheel {
+  display: block;
+  width: fit-content;
+}
+
 @keyframes input-glow {
   0% {
     box-shadow:

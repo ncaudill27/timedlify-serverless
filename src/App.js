@@ -98,7 +98,7 @@ function Create({changeView}) {
 
     return (
       <div className='wheel'>
-        {num}
+        <h2>{num}</h2>
       </div>
     )
   }
@@ -131,12 +131,15 @@ function Create({changeView}) {
           <input className='color' type='radio' id='#d9ff00' name='color' value='#d9ff00' checked={color === '#d9ff00'} onChange={handleColor} />
           <label className='color-for' htmlFor='#d9ff00' style={{backgroundColor: '#d9ff00'}}></label>
         </div>
-        <button type='submit'>Create Timer</button>
-
-        <h3>Time</h3>
-        {/* <div className='timer'>
-
+        
+        {/* <h3>Time</h3>
+        <div className='timer'>
+          <Wheel num={12} />
+          <Wheel num='00' />
+          <Wheel num='PM' />
         </div> */}
+        
+        <button type='submit'>Create Timer</button>
       </form>
   );
 }
