@@ -66,8 +66,8 @@ input {
 
 input:focus, input:active {
   width: 70%;
-  outline: 1px solid #00ff22;
-  animation: input-glow 1s linear infinite;
+  outline: 0.5px solid #00ff22;
+  animation: input-glow 3s linear infinite;
   transition: width 0.5s ease-in-out;
 }
 
@@ -163,10 +163,19 @@ COLORS RADIO
 
 @keyframes input-glow {
   0% {
-    box-shadow: 0 0 1px 2px #0c7c1b;
+    box-shadow:
+      inset 0 0 1px 1px #00ff22,
+      0 0 2px 1px #00ff22;
   }
   50% {
-    box-shadow: 0 0 3px 2px #0c7c1b;
+    box-shadow:
+      inset 0 0 1px 1px #00ff22,
+      0 0 5px 2px #00ff22;
+  }
+  100% {
+    box-shadow:
+      inset 0 0 1px 1px #00ff22,
+      0 0 2px 2px #00ff22;
   }
 }
 

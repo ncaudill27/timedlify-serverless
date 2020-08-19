@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
 
-  const [view, setView] = useState('main');
+  const [view, setView] = useState('new');
 
   const router = () => {
     switch(view) {
@@ -77,6 +77,31 @@ function Create({changeView}) {
     e.preventDefault();
     changeView('main');
   }
+
+  const Wheel = ({num, type}) => {
+
+    const hours = [...new Array(13).keys()].slice(1);
+    const minutes = [...new Array(6).keys()];
+
+    switch(type) {
+
+      case 'hours':
+
+      
+      default:
+        break
+    }
+
+    const displayValue = () => {
+
+    }
+
+    return (
+      <div className='wheel'>
+        {num}
+      </div>
+    )
+  }
   
   return (
       <form onSubmit={handleSubmit}>
@@ -107,7 +132,15 @@ function Create({changeView}) {
           <label className='color-for' htmlFor='#d9ff00' style={{backgroundColor: '#d9ff00'}}></label>
         </div>
         <button type='submit'>Create Timer</button>
+
+        <h3>Time</h3>
+        {/* <div className='timer'>
+
+        </div> */}
       </form>
   );
 }
+
+
+
 export default App;
