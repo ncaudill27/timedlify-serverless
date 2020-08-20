@@ -73,13 +73,21 @@ function Create({changeView}) {
   const handleColor = e => setColor(e.target.value);
 
   const [hours, setHours] = useState(12);
-  const handleHours = e => setHours(e.target.innerHTML);
+  const handleHours = val => {
+    if (val < 1) setHours(12);
+    else if (val > 12) setHours(1);
+    else setHours(val);
+  };
 
   const [minutes, setMinutes] = useState(0);
-  const handleMinutes = e => setMinutes(e.target.innerHTML);
+  const handleMinutes = val => {
+    if (val < 0) setMinutes(59);
+    else if (val > 59) setMinutes(0);
+    else setMinutes(val);
+  };
 
   const [noon, setNoon] = useState('PM');
-  const handleNoon = e => setNoon(e.target.innerHTML);
+  const handleNoon = val => setNoon(val);
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -163,24 +171,35 @@ const Wheel = ({num, type, set, handle}) => {
       setItems(noon);
       break;
   }
-
-  const mouseDown = (set, e) => {
-    console.log(e.targetTouches)
-  }
   
+  const handleNoon = val => val === 'PM' ? 'AM' : 'PM';
+  
+  const turnUp = () => {
+    if (!type) return handle(handleNoon(showing))
+    showing = parseInt(showing, 10);
+    handle(showing - 1);
+  }
+
+  const turnDown = () => {
+    if (!type) return handle(handleNoon(showing))
+    showing = parseInt(showing, 10);
+    handle(showing + 1);
+  }
+
+
   const leadingZero = num => num.toString().length === 1 ? '0' + num : num;
 
   return (
     <div>
-      <h2 className='arrow'>▲</h2>
-      <div className='wheel-box' onTouchMove={ e => mouseDown(set, e) }>
+      <h2 className='arrow' onClick={turnUp}>▲</h2>
+      <div className='wheel-box'>
         <div className='wheel'>
           <h2>{leadingZero(above)}</h2>
-          <h2 onMouseUp={set} onChange={handle}>{leadingZero(showing)}</h2>
+          <h2 onMouseUp={set}>{leadingZero(showing)}</h2>
           <h2>{leadingZero(below)}</h2>
         </div>
       </div>
-      <h2 className='arrow'>▼</h2>
+      <h2 className='arrow' onClick={turnDown}>▼</h2>
     </div>
   );
 }

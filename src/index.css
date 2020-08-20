@@ -39,9 +39,8 @@ h6 { font-weight: 500; }
 /* -----------
 SPACING
 ---------- */
-h3 {
-  margin-top: 1em;
-}
+h2 { margin: 0.15em 0;}
+h3 { margin-top: 1em; }
 
 form {
   margin: 0 auto;
@@ -135,8 +134,8 @@ PLAYLIST RADIO
 .playlist:checked + label {
   background-color: #222222;
   box-shadow:
-  -2px -1px 5px 1px #4e4e4e inset,
-  2px 1px 5px 1px #4e4e4e inset;
+  -2px -1px 5px 1px #0c0c0c inset,
+  2px 1px 5px 1px #0c0c0c inset;
 }
 /* -----------
 COLORS RADIO
@@ -181,8 +180,11 @@ COLORS RADIO
 }
 
 .wheel { font-family: 'Envy Code R'; }
-.arrow { color: #b3b3b3; text-shadow: 1px solid #c2cc;}
-
+.arrow {
+  color: #b3b3b3;
+  text-shadow: 1px solid #c2cc;
+}
+.arrow:hover { cursor: pointer; }
 
 @keyframes input-glow {
   0% {
