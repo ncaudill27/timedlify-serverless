@@ -117,9 +117,9 @@ function Create({changeView}) {
         
         <h3>Time</h3>
         <div className='timer'>
-          <Wheel num={hours} type='hours' set={handleHours} />
-          <Wheel num={minutes} type='minutes' set={handleMinutes} />
-          <Wheel num={noon} set={handleNoon} />
+          <Wheel num={hours} type='hours' set={handleHours} handle={handleHours} />
+          <Wheel num={minutes} type='minutes' set={handleMinutes} handle={handleMinutes} />
+          <Wheel num={noon} set={handleNoon} handle={handleNoon} />
         </div>
         
         <button type='submit'>Create Timer</button>
@@ -127,30 +127,53 @@ function Create({changeView}) {
   );
 }
 
-const Wheel = ({num, type, set}) => {
+const Wheel = ({num, type, set, handle}) => {
 
   const hours = [...new Array(13).keys()].slice(1);
-  const minutes = [...new Array(6).keys()];
+  const minutes = [...new Array(60).keys()];
+  const noon = ['AM', 'PM']
+  let showing, above, below, index;
 
   switch(type) {
 
     case 'hours':
-      hours.find( t => t === num)
+      index = hours.findIndex( h => h === num );
+      above = hours[index - 1]
+      showing = hours[index]
+      below = hours[index + 1]
+      break;
     
+    case 'minutes':
+      index = minutes.findIndex( m => m === num );
+      above = minutes[index - 1]
+      showing = minutes[index]
+      below = minutes[index + 1]
+      break;
+
     default:
-      break
+
+      break;
   }
 
-  const displayValue = () => {
-
+  const mouseDown = (set, e) => {
+    console.log(e.targetTouches)
   }
+
+  console.log(type, showing)
   
-  if (num.toString().length === 1) num = '0' + num;
+  const leadingZero = num => num.toString().length === 1 ? '0' + num : num;
+
   return (
-    <div className='wheel-box'>
-      <div className='wheel'>
-        <h2 onMouseUp={set}>{num}</h2>
+    <div>
+      <h2 className='arrow'>▲</h2>
+      <div className='wheel-box' onTouchMove={ e => mouseDown(set, e) }>
+        <div className='wheel'>
+          <h2>{leadingZero(num)}</h2>
+          <h2 onMouseUp={set} onChange={handle}>{leadingZero(num)}</h2>
+          <h2>{leadingZero(num)}</h2>
+        </div>
       </div>
+      <h2 className='arrow'>▼</h2>
     </div>
   );
 }

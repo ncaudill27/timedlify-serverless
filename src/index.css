@@ -170,16 +170,19 @@ COLORS RADIO
 
 .wheel-box {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
-  width: 2.5em;
-  height: 2.5em;
+  width: 4em;
+  height: 4em;
   background-color: #4e4e4e;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-.wheel {
-  font-family: 'Envy Code R';
-}
+.wheel { font-family: 'Envy Code R'; }
+.arrow { color: #b3b3b3; text-shadow: 1px solid #c2cc;}
+
 
 @keyframes input-glow {
   0% {
