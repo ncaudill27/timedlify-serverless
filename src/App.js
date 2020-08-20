@@ -132,34 +132,41 @@ const Wheel = ({num, type, set, handle}) => {
   const hours = [...new Array(13).keys()].slice(1);
   const minutes = [...new Array(60).keys()];
   const noon = ['AM', 'PM']
+  
   let showing, above, below, index;
+
+  const setItems = (arr) => {
+    index = arr.findIndex( elem => elem === num);
+    above = index - 1;
+    below = index + 1;
+    if ( above < 0 ) {
+      above = arr.length - 1
+    } else if ( below >= arr.length ) {
+      below = 0
+    };
+    above = arr[above]
+    showing = arr[index]
+    below = arr[below]
+  }
 
   switch(type) {
 
     case 'hours':
-      index = hours.findIndex( h => h === num );
-      above = hours[index - 1]
-      showing = hours[index]
-      below = hours[index + 1]
+      setItems(hours);
       break;
     
     case 'minutes':
-      index = minutes.findIndex( m => m === num );
-      above = minutes[index - 1]
-      showing = minutes[index]
-      below = minutes[index + 1]
+      setItems(minutes);
       break;
 
     default:
-
+      setItems(noon);
       break;
   }
 
   const mouseDown = (set, e) => {
     console.log(e.targetTouches)
   }
-
-  console.log(type, showing)
   
   const leadingZero = num => num.toString().length === 1 ? '0' + num : num;
 
@@ -168,9 +175,9 @@ const Wheel = ({num, type, set, handle}) => {
       <h2 className='arrow'>▲</h2>
       <div className='wheel-box' onTouchMove={ e => mouseDown(set, e) }>
         <div className='wheel'>
-          <h2>{leadingZero(num)}</h2>
-          <h2 onMouseUp={set} onChange={handle}>{leadingZero(num)}</h2>
-          <h2>{leadingZero(num)}</h2>
+          <h2>{leadingZero(above)}</h2>
+          <h2 onMouseUp={set} onChange={handle}>{leadingZero(showing)}</h2>
+          <h2>{leadingZero(below)}</h2>
         </div>
       </div>
       <h2 className='arrow'>▼</h2>
