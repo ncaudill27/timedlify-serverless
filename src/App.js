@@ -9,9 +9,7 @@ function App() {
     switch(view) {
 
       case 'main':
-        return <>
-          <Timedify changeView={setView} />
-        </>;
+        return <Timedify changeView={setView} />;
 
       case 'new':
         return <Create changeView={setView} />;
